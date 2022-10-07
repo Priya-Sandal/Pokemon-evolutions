@@ -23,7 +23,7 @@ export default {
     fetch("https://pokeapi.co/api/v2/pokemon/1")
     .then((res)=> res.json())
     .then((data)=>{
-     console.log(data)
+     console.log(dataa)
      state.pokemons = data.results;
      state.urlIdLookup = data.results.reduce((acc,curr, index) =>
      acc = { acc, [curr.name]: index+1},{})
