@@ -1,11 +1,18 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
+  <div >
+    <router-link  class="head" to="/">Pokemon</router-link> 
+  </div>
   
-  </nav>
   <router-view/>
 </template>
 
 <style>
-
+.head
+{
+  color: red;
+  justify-content: center;
+  display: flex;
+  font-size: 50px;
+  
+}
 </style>
