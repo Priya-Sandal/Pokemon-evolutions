@@ -43,6 +43,10 @@ export default {
         name.value = data.name
         image.value = data.sprites.back_default
         types.value = data.types
+        name.value = data.name
+        image.value = data.sprites.front_default
+        types.value = data.types
+        
         
       })
     
