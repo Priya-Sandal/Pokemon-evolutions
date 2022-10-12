@@ -1,53 +1,70 @@
+ 
 <template>
-  
-  <div class="add" >
-    v-for="(pokemon, idx) in pokemons" :key="idx">
-       <router-link :to="`/about/${urlIdLookup[pokemon.name]}`">
-       </router-link> 
-      {{pokemon.name}}
-    </div>
+  <div class="poke" v-for="(pokemon,idx) in pokemons" :key="idx">
+    {{pokemon.name}}
+  </div>
+  <div class="home">
+    <h3>hello</h3>
+    <!-- {{pokemons}} -->
+    {{name}}
+    <!-- {{image}} -->
+     <!-- <img src= "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/1.png"> -->
+     <img v-bind:src="image">
+     <ul>
+      <li v-for="element in types">
+        {{element.type.name}}
+      </li>
+     </ul>
+  </div>
 
-  <!-- <div class="home">
-   <h3>hello </h3>
-  {{pokemons}}
-  </div> -->
-  
+  <!-- <p ref="state"></p> -->
 </template>
-
+  
 <script>
+import { reactive, toRefs , ref} from 'vue';
 // @ is an alias to /src
-import {reactive, toRefs} from "vue";
-
 export default {
-  name: 'Home',
-  setup(){
-   const state = reactive({
-    pokemons: [],
-    urlIdLookup: {},
-    text:""
-   })
+  name: 'HomeView',
+  setup() {
+    const state = reactive({
+      pokemons: [],
+      urlIdLookup: {},
 
-
-
-
-    fetch("https://pokeapi.co/api/v2/pokemon/1")
-    .then((res)=> res.json())
-    .then((data)=>{
-    //  console.log(data.name)
-    console.log(data.results)
-     state.pokemons = data.results;
-    
-     state.urlIdLookup = data.results.reduce((acc,cur,idx)=>
-     
-     acc = {...acc, [cur.name]:idx}
-     ,{})
     })
-    return {...toRefs(state)}
+
+  let name = ref();
+  let image = ref();
+  let types = ref([]);
+    fetch("https://pokeapi.co/api/v2/pokemon/1")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data)
+        console.log(data.name)
+        name.value = data.name
+        image.value = data.sprites.back_default
+        types.value = data.types
+        
+      })
+    
+    fetch("https://pokeapi.co/api/v2/pokemon/2")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data)
+      })
+    fetch("https://pokeapi.co/api/v2/pokemon/3")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data)
+      })
+
+     return {...toRefs(state) ,name,image,types}
   }
+  
+
 }
 </script>
+<style>
 
-
-
+</style> 
 
 

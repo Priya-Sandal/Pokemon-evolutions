@@ -1,18 +1,24 @@
 <template>
-  <div >
-    <router-link  class="head" to="/">Pokemon</router-link> 
+  <div>
+    <h1 class="head">Pokemon</h1>
+    <router-link to="/">home</router-link>
   </div>
-  
-  <router-view/>
+
+  <router-view />
 </template>
+<script>
+
+
+ </script>
 
 <style>
-.head
-{
+.head {
   color: red;
   justify-content: center;
   display: flex;
   font-size: 50px;
-  
+
 }
 </style>
+
+
