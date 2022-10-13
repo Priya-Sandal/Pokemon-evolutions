@@ -4,9 +4,10 @@
     {{pokemon.name}}
   </div>
   <div class="home">
-    <h3>hello</h3>
+    <!-- <h3>hello</h3> -->
     <!-- {{pokemons}} -->
     {{name}}
+    
     <!-- {{image}} -->
      <!-- <img src= "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/1.png"> -->
      <img v-bind:src="image">
@@ -36,6 +37,7 @@ export default {
   let image = ref();
   let types = ref([]);
     fetch("https://pokeapi.co/api/v2/pokemon/1")
+    fetch("https://pokeapi.co/api/v2/pokemon/2")
       .then((res) => res.json())
       .then((data) => {
         console.log(data)
@@ -44,17 +46,20 @@ export default {
         image.value = data.sprites.back_default
         types.value = data.types
         name.value = data.name
-        image.value = data.sprites.front_default
+        image.value = data.sprites.back_default
         types.value = data.types
         
         
       })
     
-    fetch("https://pokeapi.co/api/v2/pokemon/2")
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data)
-      })
+    // fetch("https://pokeapi.co/api/v2/pokemon/2")
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     console.log(data)
+    //     name.value = data.name
+    //     image.value = data.sprites.back_default
+    //     types.value = data.types
+    //   })
     fetch("https://pokeapi.co/api/v2/pokemon/3")
       .then((res) => res.json())
       .then((data) => {
@@ -68,6 +73,16 @@ export default {
 }
 </script>
 <style>
+img {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  width: 150px;
+  background-color: red;
+}
+.home{
+  margin-top: 50px;
+}
 
 </style> 
 
